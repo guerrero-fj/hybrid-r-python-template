@@ -1,0 +1,10 @@
+.Rhistory
+.RData
+.Rproj.user/
+.DS_Store
+__pycache__/
+*.pyc
+renv/library/
+environment.yml
+quarto-env-conda/
+.ipynb_checkpoints/
