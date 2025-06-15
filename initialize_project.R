@@ -5,6 +5,13 @@
 # --- CONFIG ---
 use_python <- TRUE  # Set to FALSE if the project only uses R
 
+# ---- Safety check: must be in project root ----
+required_files <- c("initialize_project.R", "setup_conda_env.R")
+missing <- required_files[!file.exists(required_files)]
+if (length(missing)) {
+  stop("⚠️ Please open the project via the .Rproj file or set the working directory to the project root. Missing files: ", paste(missing, collapse = ", "))
+}
+
 # ---- 1. Install required R packages ----
 required_r <- c("renv", "reticulate", "here")
 installed_r <- rownames(installed.packages())
@@ -16,10 +23,17 @@ for (pkg in required_r) {
   }
 }
 
-# ---- 2. Restore renv snapshot ----
-message("Restoring R packages with renv...")
+# ---- 2. Initialize or restore renv environment ----
+message("Setting up R environment with renv...")
+
 library(renv)
-renv::restore()
+if (file.exists("renv.lock")) {
+  message("Found renv.lock file — restoring environment...")
+  renv::restore()
+} else {
+  message("No renv.lock found — initializing new renv project...")
+  renv::init(bare = TRUE)
+}
 
 # ---- 3. Optional: Set up Python via Conda ----
 if (use_python) {
@@ -37,3 +51,5 @@ if (use_python) {
 }
 
 message("✅ Project initialized. You're ready to code!")
+
+
