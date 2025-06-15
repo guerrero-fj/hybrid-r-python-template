@@ -1,0 +1,19 @@
+project:
+  type: default
+  output-dir: outputs
+
+execute:
+  echo: false
+  warning: false
+  message: false
+  engine: knitr
+  knitr:
+    opts_chunk:
+      python.reticulate: true
+
+format:
+  html:
+    toc: true
+    number-sections: true
+    code-fold: true
+    theme: default
