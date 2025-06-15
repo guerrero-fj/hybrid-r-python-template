@@ -3,7 +3,17 @@
 # Supports both R-only and R+Python workflows
 
 # --- CONFIG ---
-use_python <- TRUE  # Set to FALSE if the project only uses R
+# --- initialize_project.R ---
+# Hybrid R + Python environment setup
+
+cat("👋 Hi! Welcome to your new project.\n")
+cat("This workflow is designed for R–Python hybrid projects by default.\n")
+cat("If you don’t plan to use Python, just type 'n'. Otherwise, press Enter to continue with Python support enabled.\n\n")
+
+input <- readline("❓ Enable Python support? [Y/n] (default = Y): ")
+use_python <- !(tolower(trimws(input)) == "n")
+
+cat(sprintf("\n🔧 Python integration is %s.\n\n", ifelse(use_python, "ENABLED", "DISABLED")))
 
 # ---- Safety check: must be in project root ----
 required_files <- c("initialize_project.R", "setup_conda_env.R")
