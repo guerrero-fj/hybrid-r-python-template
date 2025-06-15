@@ -43,7 +43,16 @@ Then:
 git clone https://github.com/YOUR_USERNAME/your-new-project.git
 cd your-new-project
 ```
-Alternatively, just clone it directly from the GitHub website. You may want to replace the README file with your own. To avoid conflicts, leave the box asking you to add a README file unchecked. Once you have cloned this repository, you can create your own README and re-name this file. 
+Alternatively, use the "Use this template" button on GitHub and follow the prompts.
+
+⚠️ Important:
+When creating the repo from the template, **do not check the box** to add a README. This template already includes one, and adding another will cause a merge conflict.
+
+Once your project is cloned, you’re welcome to:
+
+- Edit the existing README.md to reflect your project goals
+
+- Or rename and replace it with your own version
 
 ### 2. Set Up as an RStudio Project
 
