@@ -1,5 +1,9 @@
 # 🌀 Hybrid R + Python Quarto Template
 
+This project demonstrates a reproducible workflow combining R, Python (via Conda), and Quarto (.qmd notebooks).  
+
+It is designed for users who want to mix R and Python in one project while maintaining clean, version-controlled environments.
+
 A ready-to-use, reproducible template for hybrid data science workflows using:
 
 - **R** for statistical computing and visualization (via `renv`)
@@ -7,7 +11,13 @@ A ready-to-use, reproducible template for hybrid data science workflows using:
 - **Quarto** to author `.qmd` notebooks that mix both languages seamlessly
 
 ---
+## 🔧 Prerequisites
 
+- R (≥ 4.0) and RStudio
+- Python (Miniconda or Anaconda)
+- Quarto CLI (optional, for command-line render)
+
+---
 ## 🚀 What’s Included
 
 | File                   | Purpose                                         |
@@ -33,10 +43,20 @@ Then:
 git clone https://github.com/YOUR_USERNAME/your-new-project.git
 cd your-new-project
 ```
+Alternatively, just clone it directly from the GitHub website. You may want to replace the README file with your own. To avoid conflicts, leave the box asking you to add a README file unchecked. Once you have cloned this repository, you can create your own README and re-name this file. 
 
-### 2. Initialize the environment
+### 2. Set Up as an RStudio Project
 
-Open R or RStudio and run:
+After cloning or downloading this repo:
+
+1. Open RStudio  
+2. Go to **File > New Project > Existing Directory**  
+3. Choose this project folder  
+4. RStudio will create an `.Rproj` file and open the project in a clean, scoped environment  
+
+### 3. Initialize the environment
+
+Once inside your .Rproj in RStudio run in the console:
 
 ```r
 source("initialize_project.R")
@@ -84,13 +104,32 @@ It will execute both R and Python chunks.
 
 ---
 
+## 🔁 Updating and Sharing Your Environment
+
+### After installing/updating Python packages:
+
+```r
+export_conda_env()
+```
+This overwrites `environment.yml` with your current Conda environment.
+
+### After installing/updating R packages:
+
+```r
+renv::snapshot()
+```
+This updates `renv.lock` so collaborators get the same R setup.
+
+---
+
+## 📁 Key Dependency Files
+
+- `environment.yml` – lists Python/Conda packages
+- `renv.lock` – pins your R package versions
+- `.gitignore` – filters out system and local clutter
+- `initialize_project.R` – one-stop script to bootstrap your setup
+
 ## 🪪 License
 
 MIT License 
 
----
-
-## 💡 Want Help?
-
-Need help expanding this template for geospatial data, modeling workflows, or Quarto Books?  
-Open an issue or fork the repo — contributions are welcome!
